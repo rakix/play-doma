@@ -2,26 +2,25 @@ package doma;
 
 import javax.sql.DataSource;
 
-import org.seasar.doma.jdbc.DomaAbstractConfig;
+import org.seasar.doma.jdbc.Config;
 import org.seasar.doma.jdbc.JdbcLogger;
 import org.seasar.doma.jdbc.dialect.Dialect;
 import org.seasar.doma.jdbc.dialect.H2Dialect;
 import org.seasar.doma.jdbc.tx.LocalTransaction;
-import org.seasar.doma.jdbc.tx.LocalTransactionalDataSource;
+import org.seasar.doma.jdbc.tx.LocalTransactionDataSource;
 
 import play.db.DB;
-
 import play.modules.doma.PlayLogger;
 
 /**
  * Doma用設定クラス
  */
-public class AppConfig extends DomaAbstractConfig {
+public class AppConfig implements  Config  {
 
 	/**
 	 * データソース
 	 */
-	protected static final LocalTransactionalDataSource dataSource = createDataSource();
+	protected static final LocalTransactionDataSource   dataSource = createDataSource();
 
 	/**
 	 * SQL方言
@@ -60,8 +59,8 @@ public class AppConfig extends DomaAbstractConfig {
 	/**
 	 * PlayのデータソースをDomaで使えるように設定
 	 */
-	protected static LocalTransactionalDataSource createDataSource() {
-		return new LocalTransactionalDataSource(DB.datasource);
+	protected static LocalTransactionDataSource createDataSource() {
+		return new LocalTransactionDataSource(DB.getDataSource());
 	}
 
 	/**

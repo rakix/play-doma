@@ -1,6 +1,6 @@
 h1. Domaモジュール
 
-p(note). Play framework1.2.4でDomaを使用できるようにするモジュールです。
+p(note). Play framework1.3.x(Java8)でDoma2を使用できるようにするモジュールです。
 
 
 h2. サンプルアプリケーション

@@ -88,7 +88,7 @@ public class PlayLogger implements JdbcLogger {
 	 * @param transactionId
 	 */
 	@Override
-	public void logLocalTransactionBegun(String callerClassName,
+	public void logTransactionBegun(String callerClassName,
 			String callerMethodName, String transactionId) {
 		Logger.debug(Message.DOMA2063.getMessage(transactionId));
 	}
@@ -101,7 +101,7 @@ public class PlayLogger implements JdbcLogger {
 	 * @param transactionId
 	 */
 	@Override
-	public void logLocalTransactionEnded(String callerClassName,
+	public void logTransactionEnded(String callerClassName,
 			String callerMethodName, String transactionId) {
 		Logger.debug(Message.DOMA2064.getMessage(transactionId));
 	}
@@ -115,24 +115,11 @@ public class PlayLogger implements JdbcLogger {
 	 * @param savepointName
 	 */
 	@Override
-	public void logLocalTransactionSavepointCreated(String callerClassName,
+	public void logTransactionSavepointCreated(String callerClassName,
 			String callerMethodName, String transactionId, String savepointName) {
 		Logger.debug(Message.DOMA2065.getMessage(transactionId, savepointName));
 	}
-
-	/**
-	 * ローカルトランザクションのセーブポイントの削除を記録します
-	 * 
-	 * @param callerClassName
-	 * @param callerMethodName
-	 * @param transactionId
-	 * @param savepointName
-	 */
-	@Override
-	public void logLocalTransactionSavepointReleased(String callerClassName,
-			String callerMethodName, String transactionId, String savepointName) {
-		Logger.debug(Message.DOMA2066.getMessage(transactionId, savepointName));
-	}
+	
 
 	/**
 	 * ローカルトランザクションのコミットを記録します
@@ -142,7 +129,7 @@ public class PlayLogger implements JdbcLogger {
 	 * @param transactionId
 	 */
 	@Override
-	public void logLocalTransactionCommitted(String callerClassName,
+	public void logTransactionCommitted(String callerClassName,
 			String callerMethodName, String transactionId) {
 		Logger.debug(Message.DOMA2067.getMessage(transactionId));
 	}
@@ -155,7 +142,7 @@ public class PlayLogger implements JdbcLogger {
 	 * @param transactionId
 	 */
 	@Override
-	public void logLocalTransactionRolledback(String callerClassName,
+	public void logTransactionRolledback(String callerClassName,
 			String callerMethodName, String transactionId) {
 		Logger.debug(Message.DOMA2068.getMessage(transactionId));
 	}
@@ -169,7 +156,7 @@ public class PlayLogger implements JdbcLogger {
 	 * @param savepointName
 	 */
 	@Override
-	public void logLocalTransactionSavepointRolledback(String callerClassName,
+	public void logTransactionSavepointRolledback(String callerClassName,
 			String callerMethodName, String transactionId, String savepointName) {
 		Logger.debug(Message.DOMA2069.getMessage(transactionId, savepointName));
 
@@ -184,7 +171,7 @@ public class PlayLogger implements JdbcLogger {
 	 * @param e
 	 */
 	@Override
-	public void logLocalTransactionRollbackFailure(String callerClassName,
+	public void logTransactionRollbackFailure(String callerClassName,
 			String callerMethodName, String transactionId, SQLException e) {
 		Logger.error(Message.DOMA2070.getMessage(transactionId));
 	}
@@ -257,5 +244,6 @@ public class PlayLogger implements JdbcLogger {
 			String callerMethodName, SQLException e) {
 		Logger.error(e, Message.DOMA2075.getMessage());
 	}
+
 
 }
